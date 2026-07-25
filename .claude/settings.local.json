@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -c script.js)",
+      "Bash(node -c data.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/index.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/styles.css)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/script.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/data.js)",
+      "Bash(curl *)",
+      "Skill(claude-in-chrome)",
+      "Bash(pkill -f \"serve -l 8080\")",
+      "Skill(run)",
+      "Bash(npx --version)"
+    ]
+  }
+}
