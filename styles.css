@@ -695,6 +695,11 @@ button {
 #platformInstagram.is-active {
   background-color: transparent;
   background-image: linear-gradient(to right, #f9ce34, #ee2a7b 55%, #6228d7);
+  /* The tab has a 2px transparent border; by default the gradient tile starts
+     at the padding box but still paints (and repeats) under that border, which
+     showed a wrapped purple sliver at the left edge and yellow at the right.
+     Originating from the border box makes one tile span the full pill. */
+  background-origin: border-box;
   color: #fff;
 }
 
