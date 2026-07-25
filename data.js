@@ -4,7 +4,6 @@
  */
 
 const DATA = {
-
   handle: "@jessicasyaps",
   email: "jessica.downes839@gmail.com",
   location: "London, UK",
@@ -12,8 +11,9 @@ const DATA = {
   hero: {
     name: "Jessica",
     role: "Creator: London life, travel, comedy, and learning Romanian for fun",
-    tagline: "London chaos, budget travel, and a boyfriend who corrects my Romanian on camera.",
-    photo: "assets/photos/hero-cutout.jpg"
+    tagline:
+      "London chaos, budget travel, and a boyfriend who corrects my Romanian on camera.",
+    photo: "assets/photos/hero-cutout.jpg",
   },
 
   about: {
@@ -21,36 +21,58 @@ const DATA = {
     bio: [
       "Hi, I'm Jessica. I make videos about London life, travel, couple content, and learning Romanian for fun.",
       "Expect everyday London moments, budget travel chaos, real couple content with cultural mix ups, and me attempting Romanian in public.",
-      "If it's funny, a little chaotic, and true to real life, that's probably one of mine."
+      "If it's funny, a little chaotic, and true to real life, that's probably one of mine.",
     ],
-    calloutNote: "Small following, huge reach: brands get more attention per follower here than on most bigger accounts.",
+    calloutNote:
+      "Small following, huge reach: brands get more attention per follower here than on most bigger accounts.",
     romanianWords: [
       { word: "Bună", meaning: "hello, the first word I properly learned" },
-      { word: "Mulțumesc", meaning: "thank you, said with far too much enthusiasm" },
+      {
+        word: "Mulțumesc",
+        meaning: "thank you, said with far too much enthusiasm",
+      },
       { word: "Pupici", meaning: "little kisses, I say this constantly" },
       { word: "Noroc", meaning: "good luck, my favourite one word answer" },
-      { word: "Scumpo", meaning: "sweetheart, also means expensive, so context matters" },
+      {
+        word: "Scumpo",
+        meaning: "sweetheart, also means expensive, so context matters",
+      },
       { word: "Hai noroc", meaning: "cheers, the toast I never get wrong" },
-      { word: "Nu înțeleg", meaning: "I don't understand, my most useful phrase" },
+      {
+        word: "Nu înțeleg",
+        meaning: "I don't understand, my most useful phrase",
+      },
       { word: "Te iubesc", meaning: "I love you, saved for special occasions" },
-      { word: "Poftă bună", meaning: "enjoy your meal, said before every dinner" },
-      { word: "Da", meaning: "yes, easy to remember, harder to say with confidence" },
+      {
+        word: "Poftă bună",
+        meaning: "enjoy your meal, said before every dinner",
+      },
+      {
+        word: "Da",
+        meaning: "yes, easy to remember, harder to say with confidence",
+      },
       { word: "Nu", meaning: "no, useful in markets and arguments alike" },
       { word: "Sănătate", meaning: "to your health, a toast for celebrations" },
       { word: "Prieten", meaning: "friend, a word I use a lot in Romania" },
-      { word: "Frumos", meaning: "beautiful, my go to compliment for everything" },
-      { word: "Casă", meaning: "home, what London and Romania both feel like now" }
-    ]
+      {
+        word: "Frumos",
+        meaning: "beautiful, my go to compliment for everything",
+      },
+      {
+        word: "Casă",
+        meaning: "home, what London and Romania both feel like now",
+      },
+    ],
   },
 
   updatedOn: "25 July 2026",
   period: { label: "Last 60 days", range: "22 May to 20 July 2026" },
 
   headline: {
-    totalFollowers: 53100,        // 34,700 TikTok + 18,400 Instagram
-    combinedViews: 17200000,      // 12.4M TikTok + 4.8M Instagram
+    totalFollowers: 53100, // 34,700 TikTok + 18,400 Instagram
+    combinedViews: 17200000, // 12.4M TikTok + 4.8M Instagram
     combinedInteractions: 1258000, // TikTok likes+comments+shares + Instagram interactions
-    newFollowers60d: 37691        // +25,853 TikTok, +11,838 Instagram
+    newFollowers60d: 37691, // +25,853 TikTok, +11,838 Instagram
   },
 
   tiktok: {
@@ -66,25 +88,37 @@ const DATA = {
         yAxisTicks: [13100, 26200, 39300],
         xStart: "22 May 2026",
         xEnd: "20 July 2026",
-        points: [8800, 11500, 14000, 16500, 19000, 20500, 27000, 30000, 32000, 34700] // approximate
+        points: [
+          8800, 11500, 14000, 16500, 19000, 20500, 27000, 30000, 32000, 34700,
+        ], // approximate
       },
       gender: { female: 57, male: 43 },
-      age: { "18-24": 18.8, "25-34": 40.1, "35-44": 22.3, "45-54": 12.5, "55+": 6.3 },
+      age: {
+        "18-24": 18.8,
+        "25-34": 40.1,
+        "35-44": 22.3,
+        "45-54": 12.5,
+        "55+": 6.3,
+      },
       locations: {
-        Romania: 55.9, UK: 21.2, Germany: 3.9, Italy: 2.1,
-        "United States": 1.3, "Rest of the world": 15.6
-      }
+        Romania: 55.9,
+        UK: 21.2,
+        Germany: 3.9,
+        Italy: 2.1,
+        "United States": 1.3,
+        "Rest of the world": 15.6,
+      },
     },
 
     performance: {
-      postViews:    { value: 12400000, change: 10600000, changePct: 598.2 },
-      profileViews: { value: 271400,   change: 234400,   changePct: 634.3 },
-      likes:        { value: 883700,   change: 785700,   changePct: 801.7 },
-      comments:     { value: 16200,    change: 13300,    changePct: 465.3 },
-      shares:       { value: 30800,    change: 26200,    changePct: 569.6 }
+      postViews: { value: 12400000, change: 10600000, changePct: 598.2 },
+      profileViews: { value: 271400, change: 234400, changePct: 634.3 },
+      likes: { value: 883700, change: 785700, changePct: 801.7 },
+      comments: { value: 16200, change: 13300, changePct: 465.3 },
+      shares: { value: 30800, change: 26200, changePct: 569.6 },
     },
 
-    traffic: { forYou: 88.2, personalProfile: 11.1 }
+    traffic: { forYou: 88.2, personalProfile: 11.1 },
   },
 
   instagram: {
@@ -99,8 +133,10 @@ const DATA = {
         yAxisTicks: [7000, 14000, 21000],
         xStart: "22 May 2026",
         xEnd: "20 July 2026",
-        points: [6562, 7400, 8500, 9800, 11200, 12600, 14000, 15400, 16600, 18400] // approximate
-      }
+        points: [
+          6562, 7400, 8500, 9800, 11200, 12600, 14000, 15400, 16600, 18400,
+        ], // approximate
+      },
     },
 
     performance: {
@@ -109,22 +145,37 @@ const DATA = {
       interactions: 327300,
       viewsFromFollowers: 9.7,
       viewsFromNonFollowers: 90.3,
-      byContentType: { Reels: 4481000, Posts: 280000, Stories: 39000, "Live videos": null } // TODO: live video views
+      byContentType: {
+        Reels: 4481000,
+        Posts: 280000,
+        Stories: 39000,
+        "Live videos": null,
+      }, // TODO: live video views
     },
 
     gender: { male: 57.9, female: 42.1 },
-    age: { "18-24": 18.0, "25-34": 30.9, "35-44": 26.2, "45-54": 16.0, "55+": 8.8 },
+    age: {
+      "18-24": 18.0,
+      "25-34": 30.9,
+      "35-44": 26.2,
+      "45-54": 16.0,
+      "55+": 8.8,
+    },
     locations: {
-      Romania: 57.8, UK: 17.2, Germany: 4.9,
-      Italy: 3.2, "United States": 2.5, "Rest of the world": 14.4
-    }
+      Romania: 57.8,
+      UK: 17.2,
+      Germany: 4.9,
+      Italy: 3.2,
+      "United States": 2.5,
+      "Rest of the world": 14.4,
+    },
   },
 
   youtube: {
     handle: "@jessicasyaps",
     url: "https://www.youtube.com/@jessicasyaps",
     subscribers: null, // TODO: e.g. 4200
-    views: null        // TODO: e.g. 320000
+    views: null, // TODO: e.g. 320000
   },
 
   // Real brand logo files — drop the actual logo assets into /assets/brands/
@@ -134,9 +185,33 @@ const DATA = {
   // over `videoUrl` (TikTok embed fallback) when both are set.
   // TODO: fill in poster and website for each brand.
   brands: [
-    { name: "Trip.com", logo: "assets/brands/trip.webp",  video: "assets/brands/videos/trip.mp4",   videoUrl: "https://www.tiktok.com/@jessicasyaps/video/7657242603070508310", poster: null, website: null },
-    { name: "Temu",     logo: "assets/brands/temu.png",   video: "assets/brands/videos/temu.mp4",   videoUrl: "https://www.tiktok.com/@jessicasyaps/video/7665374361783667970", poster: null, website: null },
-    { name: "Tocobo",   logo: "assets/brands/tocobo.avif", video: "assets/brands/videos/tocobo.mp4", videoUrl: "https://www.tiktok.com/@jessicasyaps/video/7650916444204453142", poster: null, website: null }
+    {
+      name: "Trip.com",
+      logo: "assets/brands/trip.webp",
+      video: "assets/brands/videos/trip.mp4",
+      videoUrl:
+        "https://www.tiktok.com/@jessicasyaps/video/7657242603070508310",
+      poster: null,
+      website: null,
+    },
+    {
+      name: "Temu",
+      logo: "assets/brands/temu.png",
+      video: "assets/brands/videos/temu.mp4",
+      videoUrl:
+        "https://www.tiktok.com/@jessicasyaps/video/7665374361783667970",
+      poster: null,
+      website: null,
+    },
+    {
+      name: "Tocobo",
+      logo: "assets/brands/tocobo.avif",
+      video: "assets/brands/videos/tocobo.mp4",
+      videoUrl:
+        "https://www.tiktok.com/@jessicasyaps/video/7650916444204453142",
+      poster: null,
+      website: null,
+    },
   ],
 
   // "What I make" — one card per content pillar. `video`: a real exported mp4
@@ -148,22 +223,24 @@ const DATA = {
       title: "Travel",
       video: "assets/content/videos/travel.mp4",
       url: "https://www.tiktok.com/@jessicasyaps/video/0000000000000000003",
-      caption: "London vs. Romania: grocery shop edition.",
-      poster: "assets/photos/work-3.jpg" // PLACEHOLDER thumbnail
+      caption:
+        "Exploring Madeira's natural pools & surviving a bumblebee attack",
+      poster: "assets/photos/work-3.jpg", // PLACEHOLDER thumbnail
     },
     {
       title: "Couple",
       video: "assets/content/videos/couple.mp4",
       url: "https://www.tiktok.com/@jessicasyaps/video/0000000000000000002",
-      caption: "Boyfriend rates my Romanian accent, brutal honesty edition.",
-      poster: "assets/photos/work-2.jpg" // PLACEHOLDER thumbnail
+      caption:
+        "Going and playing (or at least attempting) badminton with my boyfriend",
+      poster: "assets/photos/work-2.jpg", // PLACEHOLDER thumbnail
     },
     {
       title: "Language",
       video: "assets/content/videos/language.mp4",
       url: "https://www.tiktok.com/@jessicasyaps/video/0000000000000000001",
-      caption: "The time I tried to order coffee in Romanian and made it way more complicated than it needed to be.",
-      poster: "assets/photos/work-1.jpg" // PLACEHOLDER thumbnail
-    }
-  ]
+      caption: "Attempting a romanian tongue twister (nailed it of course)",
+      poster: "assets/photos/work-1.jpg", // PLACEHOLDER thumbnail
+    },
+  ],
 };
