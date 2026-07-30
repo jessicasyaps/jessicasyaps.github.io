@@ -579,9 +579,9 @@ button {
     repeating-linear-gradient(
       to bottom,
       transparent,
-      transparent calc(1.3em - 1px),
-      rgba(244, 86, 142, 0.25) calc(1.3em - 1px),
-      rgba(244, 86, 142, 0.25) 1.3em
+      transparent calc(1.3em - 2px),
+      rgba(244, 86, 142, 0.4) calc(1.3em - 2px),
+      rgba(244, 86, 142, 0.4) 1.3em
     ),
     #fff;
   background-position: 0 1.35rem;

@@ -65,14 +65,14 @@ const DATA = {
     ],
   },
 
-  updatedOn: "25 July 2026",
+  updatedOn: "30 July 2026",
   period: { label: "Last 60 days", range: "22 May to 20 July 2026" },
 
   headline: {
-    totalFollowers: 53100, // 34,700 TikTok + 18,400 Instagram
-    combinedViews: 17200000, // 12.4M TikTok + 4.8M Instagram
-    combinedInteractions: 1258000, // TikTok likes+comments+shares + Instagram interactions
-    newFollowers60d: 37691, // +25,853 TikTok, +11,838 Instagram
+    totalFollowers: 55600, // 36,300 TikTok + 19,300 Instagram
+    combinedViews: 17700000, // 12.8M TikTok + 4.9M Instagram
+    combinedInteractions: 1283900, // TikTok likes+comments+shares + Instagram interactions
+    newFollowers60d: 40191, // +27,453 TikTok, +12,738 Instagram
   },
 
   tiktok: {
@@ -80,16 +80,16 @@ const DATA = {
     url: "https://www.tiktok.com/@jessicasyaps",
 
     followers: {
-      total: 34700,
-      netNew60d: 25853,
-      netNewChangePct: 583.3,
+      total: 36300,
+      netNew60d: 27453,
+      netNewChangePct: 625.7,
       growthChart: {
-        yAxisMax: 39300,
-        yAxisTicks: [13100, 26200, 39300],
+        yAxisMax: 41100,
+        yAxisTicks: [13700, 27400, 41100],
         xStart: "22 May 2026",
         xEnd: "20 July 2026",
         points: [
-          8800, 11500, 14000, 16500, 19000, 20500, 27000, 30000, 32000, 34700,
+          8800, 11500, 14000, 16500, 19000, 20500, 27000, 30000, 32000, 36300,
         ], // approximate
       },
       gender: { female: 57, male: 43 },
@@ -111,11 +111,11 @@ const DATA = {
     },
 
     performance: {
-      postViews: { value: 12400000, change: 10600000, changePct: 598.2 },
+      postViews: { value: 12800000, change: 11000000, changePct: 611.1 },
       profileViews: { value: 271400, change: 234400, changePct: 634.3 },
-      likes: { value: 883700, change: 785700, changePct: 801.7 },
-      comments: { value: 16200, change: 13300, changePct: 465.3 },
-      shares: { value: 30800, change: 26200, changePct: 569.6 },
+      likes: { value: 900000, change: 802000, changePct: 818.4 },
+      comments: { value: 16300, change: 13400, changePct: 462.1 },
+      shares: { value: 31800, change: 27200, changePct: 591.3 },
     },
 
     traffic: { forYou: 88.2, personalProfile: 11.1 },
@@ -126,28 +126,28 @@ const DATA = {
     url: "https://www.instagram.com/jessicasyaps",
 
     followers: {
-      total: 18400,
-      netNew60d: 11838,
+      total: 19300,
+      netNew60d: 12738,
       growthChart: {
-        yAxisMax: 21000,
-        yAxisTicks: [7000, 14000, 21000],
+        yAxisMax: 21600,
+        yAxisTicks: [7200, 14400, 21600],
         xStart: "22 May 2026",
         xEnd: "20 July 2026",
         points: [
-          6562, 7400, 8500, 9800, 11200, 12600, 14000, 15400, 16600, 18400,
+          6562, 7400, 8500, 9800, 11200, 12600, 14000, 15400, 16600, 19300,
         ], // approximate
       },
     },
 
     performance: {
-      views: 4800000,
-      viewersReached: 791100,
-      interactions: 327300,
+      views: 4900000,
+      viewersReached: 814200,
+      interactions: 335800,
       viewsFromFollowers: 9.7,
       viewsFromNonFollowers: 90.3,
       byContentType: {
-        Reels: 4481000,
-        Posts: 280000,
+        Reels: 4575000,
+        Posts: 286000,
         Stories: 39000,
         "Live videos": null,
       }, // TODO: live video views
@@ -205,7 +205,7 @@ const DATA = {
     },
     {
       name: "Tocobo",
-      logo: "assets/brands/tocobo.avif",
+      logo: "assets/brands/tocobo.png",
       video: "assets/brands/videos/tocobo.mp4",
       videoUrl:
         "https://www.tiktok.com/@jessicasyaps/video/7650916444204453142",

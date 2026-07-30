@@ -2,7 +2,7 @@ Real brand logo files live here, referenced from data.js's `brands` array:
 
   trip.webp   — Trip.com logo
   temu.png    — Temu logo
-  tocobo.avif — Tocobo logo
+  tocobo.png  — Tocobo logo
 
 Any image format works (SVG, PNG, WebP, AVIF, ...) — just make sure the path
 in data.js's `brands` array matches the actual filename and extension.
