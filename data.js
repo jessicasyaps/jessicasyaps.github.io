@@ -65,14 +65,14 @@ const DATA = {
     ],
   },
 
-  updatedOn: "30 July 2026",
+  updatedOn: "4 August 2026",
   period: { label: "Last 60 days", range: "22 May to 20 July 2026" },
 
   headline: {
-    totalFollowers: 55600, // 36,300 TikTok + 19,300 Instagram
-    combinedViews: 17700000, // 12.8M TikTok + 4.9M Instagram
-    combinedInteractions: 1283900, // TikTok likes+comments+shares + Instagram interactions
-    newFollowers60d: 40191, // +27,453 TikTok, +12,738 Instagram
+    totalFollowers: 57600, // 37,500 TikTok + 20,100 Instagram
+    combinedViews: 18400000, // 13.2M TikTok + 5.2M Instagram
+    combinedInteractions: 1326600, // TikTok likes+comments+shares + Instagram interactions
+    newFollowers60d: 42191, // +28,653 TikTok, +13,538 Instagram
   },
 
   tiktok: {
@@ -80,16 +80,16 @@ const DATA = {
     url: "https://www.tiktok.com/@jessicasyaps",
 
     followers: {
-      total: 36300,
-      netNew60d: 27453,
-      netNewChangePct: 625.7,
+      total: 37500,
+      netNew60d: 28653,
+      netNewChangePct: 657.3,
       growthChart: {
-        yAxisMax: 41100,
-        yAxisTicks: [13700, 27400, 41100],
+        yAxisMax: 42600,
+        yAxisTicks: [14200, 28400, 42600],
         xStart: "22 May 2026",
         xEnd: "20 July 2026",
         points: [
-          8800, 11500, 14000, 16500, 19000, 20500, 27000, 30000, 32000, 36300,
+          8800, 11500, 14000, 16500, 19000, 20500, 27000, 30000, 32000, 37500,
         ], // approximate
       },
       gender: { female: 57, male: 43 },
@@ -111,11 +111,11 @@ const DATA = {
     },
 
     performance: {
-      postViews: { value: 12800000, change: 11000000, changePct: 611.1 },
+      postViews: { value: 13200000, change: 11400000, changePct: 633.3 },
       profileViews: { value: 271400, change: 234400, changePct: 634.3 },
-      likes: { value: 900000, change: 802000, changePct: 818.4 },
-      comments: { value: 16300, change: 13400, changePct: 462.1 },
-      shares: { value: 31800, change: 27200, changePct: 591.3 },
+      likes: { value: 928200, change: 830200, changePct: 847.1 },
+      comments: { value: 16200, change: 13300, changePct: 458.6 },
+      shares: { value: 33200, change: 28600, changePct: 621.7 },
     },
 
     traffic: { forYou: 88.2, personalProfile: 11.1 },
@@ -126,28 +126,28 @@ const DATA = {
     url: "https://www.instagram.com/jessicasyaps",
 
     followers: {
-      total: 19300,
-      netNew60d: 12738,
+      total: 20100,
+      netNew60d: 13538,
       growthChart: {
-        yAxisMax: 21600,
-        yAxisTicks: [7200, 14400, 21600],
+        yAxisMax: 22500,
+        yAxisTicks: [7500, 15000, 22500],
         xStart: "22 May 2026",
         xEnd: "20 July 2026",
         points: [
-          6562, 7400, 8500, 9800, 11200, 12600, 14000, 15400, 16600, 19300,
+          6562, 7400, 8500, 9800, 11200, 12600, 14000, 15400, 16600, 20100,
         ], // approximate
       },
     },
 
     performance: {
-      views: 4900000,
-      viewersReached: 814200,
-      interactions: 335800,
+      views: 5200000,
+      viewersReached: 841000,
+      interactions: 349000,
       viewsFromFollowers: 9.7,
       viewsFromNonFollowers: 90.3,
       byContentType: {
-        Reels: 4575000,
-        Posts: 286000,
+        Reels: 4857000,
+        Posts: 304000,
         Stories: 39000,
         "Live videos": null,
       }, // TODO: live video views
