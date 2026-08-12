@@ -250,7 +250,10 @@
         `).join("")}
         <path class="trend-fill" id="${svgId}FillPath" style="fill:url(#${gradientId})" d="${fillPath}"></path>
         <path class="trend-path" id="${svgId}PathLine" d="${linePath}" pathLength="1"></path>
+        <circle class="trend-dot" id="${svgId}StartDot" cx="${points[0][0]}" cy="${points[0][1]}" r="4"></circle>
         <circle class="trend-dot" id="${svgId}Dot" cx="${points[points.length - 1][0]}" cy="${points[points.length - 1][1]}" r="4"></circle>
+        <text class="trend-value-label" id="${svgId}StartValue" x="${points[0][0]}" y="${points[0][1] - 8}" text-anchor="start">${fmtCompact(g.points[0])}</text>
+        <text class="trend-value-label" id="${svgId}EndValue" x="${points[points.length - 1][0]}" y="${points[points.length - 1][1] - 8}" text-anchor="end">${fmtCompact(g.points[g.points.length - 1])}</text>
         <text class="trend-axis-label" id="${svgId}XStart" x="${padLeft}" y="${h - 6}" text-anchor="start">${g.xStart}</text>
         <text class="trend-axis-label" id="${svgId}XEnd" x="${w - padRight}" y="${h - 6}" text-anchor="end">${g.xEnd}</text>
       `;
@@ -273,9 +276,23 @@
     document.getElementById(`${svgId}FillPath`).setAttribute("d", fillPath);
     document.getElementById(`${svgId}PathLine`).setAttribute("d", linePath);
 
+    const startDot = document.getElementById(`${svgId}StartDot`);
+    startDot.setAttribute("cx", points[0][0]);
+    startDot.setAttribute("cy", points[0][1]);
+
     const dot = document.getElementById(`${svgId}Dot`);
     dot.setAttribute("cx", points[points.length - 1][0]);
     dot.setAttribute("cy", points[points.length - 1][1]);
+
+    const startValue = document.getElementById(`${svgId}StartValue`);
+    startValue.setAttribute("x", points[0][0]);
+    startValue.setAttribute("y", points[0][1] - 8);
+    startValue.textContent = fmtCompact(g.points[0]);
+
+    const endValue = document.getElementById(`${svgId}EndValue`);
+    endValue.setAttribute("x", points[points.length - 1][0]);
+    endValue.setAttribute("y", points[points.length - 1][1] - 8);
+    endValue.textContent = fmtCompact(g.points[g.points.length - 1]);
 
     document.getElementById(`${svgId}XStart`).textContent = g.xStart;
     document.getElementById(`${svgId}XEnd`).textContent = g.xEnd;

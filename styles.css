@@ -850,6 +850,13 @@ button {
   fill: var(--ink-soft);
   transition: y 0.8s var(--ease);
 }
+.trend-value-label {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  fill: var(--pink-700);
+  transition: x 0.8s var(--ease), y 0.8s var(--ease);
+}
 
 /* ---------- stats ---------- */
 .stat-grid {
