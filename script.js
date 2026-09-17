@@ -4,14 +4,18 @@
 (function () {
   "use strict";
 
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   const fmtCompact = (n) => {
-    if (n >= 1000000) return (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + "M";
+    if (n >= 1000000)
+      return (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + "M";
     if (n >= 1000) return (n / 1000).toFixed(n % 1000 === 0 ? 0 : 1) + "K";
     return String(n);
   };
   const fmtFull = (n) => n.toLocaleString("en-US");
-  const objToRows = (obj) => Object.entries(obj).map(([label, pct]) => ({ label, pct }));
+  const objToRows = (obj) =>
+    Object.entries(obj).map(([label, pct]) => ({ label, pct }));
 
   /* ============ FLAG ICONS ============
      Unicode regional-indicator flag emoji do not render as pictures on every
@@ -27,14 +31,24 @@
     ES: '<svg viewBox="0 0 60 40"><rect width="60" height="40" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/></svg>',
     FR: '<svg viewBox="0 0 60 40"><rect width="20" height="40" fill="#0055A4"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#EF4135"/></svg>',
     BE: '<svg viewBox="0 0 60 40"><rect width="20" height="40" fill="#000"/><rect x="20" width="20" height="40" fill="#FDDA24"/><rect x="40" width="20" height="40" fill="#EF3340"/></svg>',
-    NL: '<svg viewBox="0 0 60 40"><rect width="60" height="13.3" fill="#AE1C28"/><rect y="13.3" width="60" height="13.3" fill="#fff"/><rect y="26.6" width="60" height="13.4" fill="#21468B"/></svg>'
+    NL: '<svg viewBox="0 0 60 40"><rect width="60" height="13.3" fill="#AE1C28"/><rect y="13.3" width="60" height="13.3" fill="#fff"/><rect y="26.6" width="60" height="13.4" fill="#21468B"/></svg>',
   };
   const COUNTRY_CODES = {
-    "Romania": "RO", "UK": "GB", "Germany": "DE", "Italy": "IT",
-    "United States": "US", "Spain": "ES", "France": "FR", "Ireland": "IE",
-    "Belgium": "BE", "Netherlands": "NL"
+    Romania: "RO",
+    UK: "GB",
+    Germany: "DE",
+    Italy: "IT",
+    "United States": "US",
+    Spain: "ES",
+    France: "FR",
+    Ireland: "IE",
+    Belgium: "BE",
+    Netherlands: "NL",
   };
-  const flagIcon = (code) => (code && FLAGS[code]) ? `<span class="flag-icon" aria-hidden="true">${FLAGS[code]}</span>` : "";
+  const flagIcon = (code) =>
+    code && FLAGS[code]
+      ? `<span class="flag-icon" aria-hidden="true">${FLAGS[code]}</span>`
+      : "";
 
   /* ============ NAV ============ */
   function initNav() {
@@ -80,11 +94,14 @@
       if (link) link.classList.add("active");
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActive(entry.target.id);
-      });
-    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+    );
 
     sections.forEach((s) => observer.observe(s));
   }
@@ -106,8 +123,10 @@
     heroImg.alt = DATA.hero.name + ", portrait photo";
 
     document.getElementById("contactEmail").textContent = DATA.email;
-    document.getElementById("contactLocation").textContent = "📍 " + DATA.location;
-    document.getElementById("footerYear").textContent = new Date().getFullYear();
+    document.getElementById("contactLocation").textContent =
+      "📍 " + DATA.location;
+    document.getElementById("footerYear").textContent =
+      new Date().getFullYear();
 
     const btnFlag = document.getElementById("romanianBtnFlag");
     if (btnFlag) btnFlag.innerHTML = FLAGS.RO;
@@ -139,7 +158,7 @@
   const PALETTE = {
     female: "#f4568e",
     male: "#7cc7d9",
-    other: "#f2b544"
+    other: "#f2b544",
   };
 
   function renderDonut(svgId, legendId, genderData, titleText) {
@@ -147,19 +166,25 @@
     const legend = document.getElementById(legendId);
     const r = 50;
     const circumference = 2 * Math.PI * r;
-    const cx = 60, cy = 60;
+    const cx = 60,
+      cy = 60;
 
     const entries = [
       { label: "Female", pct: genderData.female, color: PALETTE.female },
       { label: "Male", pct: genderData.male, color: PALETTE.male },
-      { label: "Other", pct: genderData.other, color: PALETTE.other }
+      { label: "Other", pct: genderData.other, color: PALETTE.other },
     ].filter((e) => e.pct > 0);
 
     let circles = svg.querySelectorAll("circle");
     if (circles.length !== entries.length) {
-      svg.innerHTML = `<title>${titleText}</title>` + entries.map(() =>
-        `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke-width="18" transform="rotate(-90 ${cx} ${cy})"/>`
-      ).join("");
+      svg.innerHTML =
+        `<title>${titleText}</title>` +
+        entries
+          .map(
+            () =>
+              `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke-width="18" transform="rotate(-90 ${cx} ${cy})"/>`,
+          )
+          .join("");
       circles = svg.querySelectorAll("circle");
     }
 
@@ -168,14 +193,20 @@
       const dash = (e.pct / 100) * circumference;
       const circle = circles[i];
       circle.setAttribute("stroke", e.color);
-      circle.setAttribute("stroke-dasharray", `${dash} ${circumference - dash}`);
+      circle.setAttribute(
+        "stroke-dasharray",
+        `${dash} ${circumference - dash}`,
+      );
       circle.setAttribute("stroke-dashoffset", -offsetAcc);
       offsetAcc += dash;
     });
 
-    legend.innerHTML = entries.map((e) =>
-      `<div class="legend-row"><span class="legend-swatch" style="background:${e.color}"></span>${e.label} ${e.pct}%</div>`
-    ).join("");
+    legend.innerHTML = entries
+      .map(
+        (e) =>
+          `<div class="legend-row"><span class="legend-swatch" style="background:${e.color}"></span>${e.label} ${e.pct}%</div>`,
+      )
+      .join("");
   }
 
   function renderBarChart(containerId, rows, horizontal, withFlags) {
@@ -184,13 +215,17 @@
 
     const existingRows = el.querySelectorAll(".bar-row");
     if (existingRows.length !== rows.length) {
-      el.innerHTML = rows.map((row) => `
+      el.innerHTML = rows
+        .map(
+          (row) => `
         <div class="bar-row">
           <span class="bar-label">${withFlags ? flagIcon(COUNTRY_CODES[row.label]) : ""}${row.label}</span>
           <div class="bar-track"><div class="bar-fill" data-pct="${row.pct}"></div></div>
           <span class="bar-value">${row.pct}%</span>
         </div>
-      `).join("");
+      `,
+        )
+        .join("");
       return;
     }
 
@@ -198,7 +233,8 @@
     // so the CSS width transition morphs them smoothly instead of resetting.
     rows.forEach((row, i) => {
       const rowEl = existingRows[i];
-      rowEl.querySelector(".bar-label").innerHTML = `${withFlags ? flagIcon(COUNTRY_CODES[row.label]) : ""}${row.label}`;
+      rowEl.querySelector(".bar-label").innerHTML =
+        `${withFlags ? flagIcon(COUNTRY_CODES[row.label]) : ""}${row.label}`;
       const fill = rowEl.querySelector(".bar-fill");
       fill.dataset.pct = row.pct;
       fill.style.width = row.pct + "%";
@@ -209,15 +245,33 @@
   function animateBars(container) {
     container.querySelectorAll(".bar-fill").forEach((fill) => {
       const pct = parseFloat(fill.dataset.pct);
-      requestAnimationFrame(() => { fill.style.width = pct + "%"; });
+      requestAnimationFrame(() => {
+        fill.style.width = pct + "%";
+      });
     });
   }
 
   /* ---- Follower growth chart (60 day window) ---- */
   function renderGrowthChart(svgId, g) {
+    const endDate = new Date();
+    const startDate = new Date(endDate);
+    startDate.setDate(endDate.getDate() - 60);
+
+    const formatDate = (date) =>
+      date.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+      });
+
+    const xStart = formatDate(startDate);
+    const xEnd = formatDate(endDate);
     const svg = document.getElementById(svgId);
-    const w = 320, h = 130;
-    const padLeft = 42, padRight = 10, padTop = 14, padBottom = 24;
+    const w = 320,
+      h = 130;
+    const padLeft = 42,
+      padRight = 10,
+      padTop = 14,
+      padBottom = 24;
     const plotW = w - padLeft - padRight;
     const plotH = h - padTop - padBottom;
 
@@ -226,8 +280,15 @@
     const yAt = (v) => padTop + plotH - (v / g.yAxisMax) * plotH;
 
     const points = g.points.map((v, i) => [xAt(i), yAt(v)]);
-    const linePath = points.map((p, i) => (i === 0 ? "M" : "L") + p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
-    const fillPath = linePath + ` L${points[points.length - 1][0]},${padTop + plotH} L${points[0][0]},${padTop + plotH} Z`;
+    const linePath = points
+      .map(
+        (p, i) =>
+          (i === 0 ? "M" : "L") + p[0].toFixed(1) + "," + p[1].toFixed(1),
+      )
+      .join(" ");
+    const fillPath =
+      linePath +
+      ` L${points[points.length - 1][0]},${padTop + plotH} L${points[0][0]},${padTop + plotH} Z`;
     const baselineY = (padTop + plotH).toFixed(1);
     const gradientId = `${svgId}Gradient`;
 
@@ -244,18 +305,22 @@
         </defs>
         <line class="trend-gridline" id="${svgId}BaseLine" x1="${padLeft}" y1="${baselineY}" x2="${w - padRight}" y2="${baselineY}"></line>
         <text class="trend-axis-label" id="${svgId}BaseLabel" x="${padLeft - 8}" y="${(padTop + plotH + 3).toFixed(1)}" text-anchor="end">0</text>
-        ${g.yAxisTicks.map((_, i) => `
+        ${g.yAxisTicks
+          .map(
+            (_, i) => `
           <line class="trend-gridline" id="${svgId}TickLine${i}" x1="${padLeft}" y1="${baselineY}" x2="${w - padRight}" y2="${baselineY}"></line>
           <text class="trend-axis-label" id="${svgId}TickLabel${i}" x="${padLeft - 8}" y="${(padTop + plotH + 3).toFixed(1)}" text-anchor="end"></text>
-        `).join("")}
+        `,
+          )
+          .join("")}
         <path class="trend-fill" id="${svgId}FillPath" style="fill:url(#${gradientId})" d="${fillPath}"></path>
         <path class="trend-path" id="${svgId}PathLine" d="${linePath}" pathLength="1"></path>
         <circle class="trend-dot" id="${svgId}StartDot" cx="${points[0][0]}" cy="${points[0][1]}" r="4"></circle>
         <circle class="trend-dot" id="${svgId}Dot" cx="${points[points.length - 1][0]}" cy="${points[points.length - 1][1]}" r="4"></circle>
         <text class="trend-value-label" id="${svgId}StartValue" x="${points[0][0]}" y="${points[0][1] - 8}" text-anchor="start">${fmtCompact(g.points[0])}</text>
         <text class="trend-value-label" id="${svgId}EndValue" x="${points[points.length - 1][0]}" y="${points[points.length - 1][1] - 8}" text-anchor="end">${fmtCompact(g.points[g.points.length - 1])}</text>
-        <text class="trend-axis-label" id="${svgId}XStart" x="${padLeft}" y="${h - 6}" text-anchor="start">${g.xStart}</text>
-        <text class="trend-axis-label" id="${svgId}XEnd" x="${w - padRight}" y="${h - 6}" text-anchor="end">${g.xEnd}</text>
+        <text class="trend-axis-label" id="${svgId}XStart" x="${padLeft}" y="${h - 6}" text-anchor="start">${xStart}</text>
+        <text class="trend-axis-label" id="${svgId}XEnd" x="${w - padRight}" y="${h - 6}" text-anchor="end">${xEnd}</text>
       `;
       svg.dataset.built = "1";
     }
@@ -294,8 +359,8 @@
     endValue.setAttribute("y", points[points.length - 1][1] - 8);
     endValue.textContent = fmtCompact(g.points[g.points.length - 1]);
 
-    document.getElementById(`${svgId}XStart`).textContent = g.xStart;
-    document.getElementById(`${svgId}XEnd`).textContent = g.xEnd;
+    document.getElementById(`${svgId}XStart`).textContent = xStart;
+    document.getElementById(`${svgId}XEnd`).textContent = xEnd;
   }
 
   function animateTrendLine(svgId) {
@@ -317,7 +382,10 @@
 
   /* ============ AUDIENCE: FOLLOWERS HEADING ============ */
   function renderFollowersHeading(platform) {
-    const total = platform === "tiktok" ? DATA.tiktok.followers.total : DATA.instagram.followers.total;
+    const total =
+      platform === "tiktok"
+        ? DATA.tiktok.followers.total
+        : DATA.instagram.followers.total;
     const label = platform === "tiktok" ? "TikTok" : "Instagram";
     document.getElementById("audienceFollowersHeading").textContent =
       `${fmtCompact(total)} ${label} followers`;
@@ -330,12 +398,23 @@
      morph smoothly between the two instead of swapping panels. */
   function renderAudiencePanel(platform) {
     const isTikTok = platform === "tiktok";
-    const gender = isTikTok ? DATA.tiktok.followers.gender : DATA.instagram.gender;
+    const gender = isTikTok
+      ? DATA.tiktok.followers.gender
+      : DATA.instagram.gender;
     const age = isTikTok ? DATA.tiktok.followers.age : DATA.instagram.age;
-    const locations = isTikTok ? DATA.tiktok.followers.locations : DATA.instagram.locations;
-    const growthChart = isTikTok ? DATA.tiktok.followers.growthChart : DATA.instagram.followers.growthChart;
+    const locations = isTikTok
+      ? DATA.tiktok.followers.locations
+      : DATA.instagram.locations;
+    const growthChart = isTikTok
+      ? DATA.tiktok.followers.growthChart
+      : DATA.instagram.followers.growthChart;
 
-    renderDonut("genderDonut", "genderLegend", gender, `${isTikTok ? "TikTok" : "Instagram"} gender split donut chart`);
+    renderDonut(
+      "genderDonut",
+      "genderLegend",
+      gender,
+      `${isTikTok ? "TikTok" : "Instagram"} gender split donut chart`,
+    );
     renderBarChart("ageChart", objToRows(age), false, false);
     renderBarChart("locationChart", objToRows(locations), true, true);
     renderGrowthChart("growthLine", growthChart);
@@ -370,56 +449,82 @@
   function initStats() {
     document.getElementById("perfWindowLabel").textContent = DATA.period.label;
 
-    document.getElementById("megaStatCount").dataset.target = DATA.headline.combinedViews;
+    document.getElementById("megaStatCount").dataset.target =
+      DATA.headline.combinedViews;
 
     document.getElementById("headlineStrip").innerHTML = [
       { label: "Total followers", value: DATA.headline.totalFollowers },
-      { label: "Combined interactions", value: DATA.headline.combinedInteractions },
-      { label: "New followers, 60 days", value: DATA.headline.newFollowers60d }
-    ].map((t) => `
+      {
+        label: "Combined interactions",
+        value: DATA.headline.combinedInteractions,
+      },
+      { label: "New followers, 60 days", value: DATA.headline.newFollowers60d },
+    ]
+      .map(
+        (t) => `
       <div class="headline-tile">
         <span class="headline-value count-up" data-target="${t.value}">0</span>
         <span class="headline-label">${t.label}</span>
       </div>
-    `).join("");
+    `,
+      )
+      .join("");
 
     const tk = DATA.tiktok.performance;
     const tiktokTiles = [
       { label: "TikTok post views", value: tk.postViews.value },
       { label: "TikTok likes", value: tk.likes.value },
       { label: "TikTok comments", value: tk.comments.value },
-      { label: "TikTok shares", value: tk.shares.value }
+      { label: "TikTok shares", value: tk.shares.value },
     ];
-    document.getElementById("tiktokStatGrid").innerHTML = tiktokTiles.map((t, i) => `
+    document.getElementById("tiktokStatGrid").innerHTML = tiktokTiles
+      .map(
+        (t, i) => `
       <div class="stat-tile reveal reveal-left" style="transition-delay:${i * 70}ms">
         <span class="stat-value count-up" data-target="${t.value}">0</span>
         <span class="stat-label">${t.label}</span>
       </div>
-    `).join("");
+    `,
+      )
+      .join("");
 
     const ig = DATA.instagram.performance;
     const instagramTiles = [
       { label: "Instagram views", value: ig.views },
       { label: "Instagram story views", value: ig.byContentType.Stories },
       { label: "Instagram interactions", value: ig.interactions },
-      { label: "Instagram viewers reached", value: ig.viewersReached }
+      { label: "Instagram viewers reached", value: ig.viewersReached },
     ];
-    document.getElementById("instagramStatGrid").innerHTML = instagramTiles.map((t, i) => `
+    document.getElementById("instagramStatGrid").innerHTML = instagramTiles
+      .map(
+        (t, i) => `
       <div class="stat-tile reveal reveal-right" style="transition-delay:${i * 70}ms">
         <span class="stat-value count-up" data-target="${t.value}">0</span>
         <span class="stat-label">${t.label}</span>
       </div>
-    `).join("");
+    `,
+      )
+      .join("");
 
-    renderBarChart("trafficChart", [
-      { label: "For You", pct: DATA.tiktok.traffic.forYou },
-      { label: "Personal profile", pct: DATA.tiktok.traffic.personalProfile }
-    ], true, false);
+    renderBarChart(
+      "trafficChart",
+      [
+        { label: "For You", pct: DATA.tiktok.traffic.forYou },
+        { label: "Personal profile", pct: DATA.tiktok.traffic.personalProfile },
+      ],
+      true,
+      false,
+    );
 
-    renderBarChart("igTrafficChart", [
-      { label: "Non followers", pct: ig.viewsFromNonFollowers },
-      { label: "Followers", pct: ig.viewsFromFollowers }
-    ], true, false);
+    renderBarChart(
+      "igTrafficChart",
+      [
+        { label: "Non followers", pct: ig.viewsFromNonFollowers },
+        { label: "Followers", pct: ig.viewsFromFollowers },
+      ],
+      true,
+      false,
+    );
   }
 
   /* ============ SHARED: video embed markup ============
@@ -451,20 +556,23 @@
   }
 
   function wireLazyVideos(videos) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const video = entry.target;
-        if (entry.isIntersecting) {
-          if (!video.src) {
-            video.src = video.dataset.lazySrc;
-            video.load();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            if (!video.src) {
+              video.src = video.dataset.lazySrc;
+              video.load();
+            }
+            if (video.dataset.userPaused !== "1") video.play().catch(() => {});
+          } else {
+            video.pause();
           }
-          if (video.dataset.userPaused !== "1") video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.4 });
+        });
+      },
+      { threshold: 0.4 },
+    );
 
     videos.forEach((el) => observer.observe(el));
   }
@@ -476,7 +584,10 @@
         if (!video) return;
         video.muted = !video.muted;
         btn.textContent = video.muted ? "🔇" : "🔊";
-        btn.setAttribute("aria-label", video.muted ? "Unmute video" : "Mute video");
+        btn.setAttribute(
+          "aria-label",
+          video.muted ? "Unmute video" : "Mute video",
+        );
       });
     });
   }
@@ -528,7 +639,10 @@
       const seekToEvent = (e) => {
         if (!video.duration) return;
         const rect = bar.getBoundingClientRect();
-        const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+        const ratio = Math.min(
+          Math.max((e.clientX - rect.left) / rect.width, 0),
+          1,
+        );
         video.currentTime = ratio * video.duration;
         setProgress(ratio);
       };
@@ -542,8 +656,10 @@
       });
       bar.addEventListener("keydown", (e) => {
         if (!video.duration) return;
-        if (e.key === "ArrowRight") video.currentTime = Math.min(video.currentTime + 5, video.duration);
-        else if (e.key === "ArrowLeft") video.currentTime = Math.max(video.currentTime - 5, 0);
+        if (e.key === "ArrowRight")
+          video.currentTime = Math.min(video.currentTime + 5, video.duration);
+        else if (e.key === "ArrowLeft")
+          video.currentTime = Math.max(video.currentTime - 5, 0);
       });
     });
   }
@@ -564,7 +680,9 @@
   /* ============ WHAT I MAKE (pillars + videos) ============ */
   function initWork() {
     const grid = document.getElementById("workGrid");
-    grid.innerHTML = DATA.content.map((w, i) => `
+    grid.innerHTML = DATA.content
+      .map(
+        (w, i) => `
       <div class="work-card reveal reveal-left" style="transition-delay:${i * 90}ms">
         <div class="work-card-head">
           <h3 class="work-title">${w.title}</h3>
@@ -572,7 +690,9 @@
         ${w.video ? localVideoMarkup(w.video) : embedWrapMarkup(w.url, w.poster, w.caption)}
         <p class="work-caption">${w.caption}</p>
       </div>
-    `).join("");
+    `,
+      )
+      .join("");
 
     fillEmbedWrapPosters(grid);
     wireLazyEmbeds(grid.querySelectorAll("[data-lazy-embed]"));
@@ -584,7 +704,9 @@
 
   /* ============ BRANDS ============ */
   function initBrands() {
-    document.getElementById("brandGrid").innerHTML = DATA.brands.map((b, i) => `
+    document.getElementById("brandGrid").innerHTML = DATA.brands
+      .map(
+        (b, i) => `
       <div class="brand-tile reveal reveal-left" style="transition-delay:${i * 90}ms">
         <div class="brand-tile-head">
           <img src="${b.logo}" alt="${b.name} logo" loading="lazy"
@@ -596,7 +718,9 @@
           ${b.website ? `<a class="brand-website-link" href="${b.website}" target="_blank" rel="noopener">Visit website ↗</a>` : ""}
         </div>
       </div>
-    `).join("");
+    `,
+      )
+      .join("");
 
     const brandGrid = document.getElementById("brandGrid");
     wireLazyVideos(brandGrid.querySelectorAll("video[data-lazy-src]"));
@@ -606,15 +730,19 @@
     brandGrid.querySelectorAll(".brand-tile").forEach((tile) => {
       const img = tile.querySelector("img");
       if (img) {
-        img.addEventListener("error", () => {
-          tile.classList.add("logo-missing");
-          const fb = tile.querySelector(".brand-fallback-name");
-          if (fb) fb.style.display = "block";
-          const hint = document.createElement("span");
-          hint.className = "brand-fallback-hint";
-          hint.textContent = "logo pending";
-          tile.querySelector(".brand-tile-head").appendChild(hint);
-        }, { once: true });
+        img.addEventListener(
+          "error",
+          () => {
+            tile.classList.add("logo-missing");
+            const fb = tile.querySelector(".brand-fallback-name");
+            if (fb) fb.style.display = "block";
+            const hint = document.createElement("span");
+            hint.className = "brand-fallback-hint";
+            hint.textContent = "logo pending";
+            tile.querySelector(".brand-tile-head").appendChild(hint);
+          },
+          { once: true },
+        );
       }
     });
 
@@ -624,21 +752,24 @@
 
   /* ============ SHARED: lazy TikTok embed loader ============ */
   function wireLazyEmbeds(wraps) {
-    const lazyObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const wrap = entry.target;
-        const url = wrap.dataset.tiktokUrl;
-        if (!url || url.includes("0000000000000000")) return; // placeholder URL, skip real embed
-        const videoId = (url.match(/\/video\/(\d+)/) || [])[1] || "";
-        wrap.classList.add("is-embedded");
-        wrap.innerHTML = `<blockquote class="tiktok-embed" cite="${url}" data-video-id="${videoId}">
+    const lazyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const wrap = entry.target;
+          const url = wrap.dataset.tiktokUrl;
+          if (!url || url.includes("0000000000000000")) return; // placeholder URL, skip real embed
+          const videoId = (url.match(/\/video\/(\d+)/) || [])[1] || "";
+          wrap.classList.add("is-embedded");
+          wrap.innerHTML = `<blockquote class="tiktok-embed" cite="${url}" data-video-id="${videoId}">
           <a href="${url}" target="_blank" rel="noopener">${url}</a>
         </blockquote>`;
-        loadTikTokScript();
-        lazyObserver.unobserve(wrap);
-      });
-    }, { rootMargin: "200px" });
+          loadTikTokScript();
+          lazyObserver.unobserve(wrap);
+        });
+      },
+      { rootMargin: "200px" },
+    );
 
     wraps.forEach((el) => lazyObserver.observe(el));
   }
@@ -646,7 +777,8 @@
   let tiktokScriptLoaded = false;
   function loadTikTokScript() {
     if (tiktokScriptLoaded) {
-      if (window.tiktokEmbed && window.tiktokEmbed.lib) window.tiktokEmbed.lib.render();
+      if (window.tiktokEmbed && window.tiktokEmbed.lib)
+        window.tiktokEmbed.lib.render();
       return;
     }
     tiktokScriptLoaded = true;
@@ -666,29 +798,32 @@
       return;
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        if (el.dataset.done) return;
-        el.dataset.done = "1";
-        const target = parseFloat(el.dataset.target);
-        const suffix = el.dataset.suffix || "";
-        const duration = 1400;
-        const start = performance.now();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          if (el.dataset.done) return;
+          el.dataset.done = "1";
+          const target = parseFloat(el.dataset.target);
+          const suffix = el.dataset.suffix || "";
+          const duration = 1400;
+          const start = performance.now();
 
-        function tick(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const value = Math.floor(target * eased);
-          el.textContent = fmtCompact(value) + suffix;
-          if (progress < 1) requestAnimationFrame(tick);
-          else el.textContent = fmtCompact(target) + suffix;
-        }
-        requestAnimationFrame(tick);
-        observer.unobserve(el);
-      });
-    }, { threshold: 0.4 });
+          function tick(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.floor(target * eased);
+            el.textContent = fmtCompact(value) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+            else el.textContent = fmtCompact(target) + suffix;
+          }
+          requestAnimationFrame(tick);
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.4 },
+    );
 
     els.forEach((el) => observer.observe(el));
   }
@@ -710,21 +845,24 @@
       return;
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        el.classList.add("is-visible");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          el.classList.add("is-visible");
 
-        // trigger any bar-chart or trend-line inside this revealed card
-        const barChart = el.querySelector(".bar-chart");
-        if (barChart) animateBars(barChart);
-        const trendLine = el.querySelector(".trend-line");
-        if (trendLine) animateTrendLine(trendLine.id);
+          // trigger any bar-chart or trend-line inside this revealed card
+          const barChart = el.querySelector(".bar-chart");
+          if (barChart) animateBars(barChart);
+          const trendLine = el.querySelector(".trend-line");
+          if (trendLine) animateTrendLine(trendLine.id);
 
-        observer.unobserve(el);
-      });
-    }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
+    );
 
     revealEls.forEach((el) => observer.observe(el));
   }
